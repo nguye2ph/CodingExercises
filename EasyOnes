@@ -55,6 +55,26 @@ import pandas as pd
 
 ms_employee_salary.groupby(['id','first_name','last_name','department_id'])['salary'].max().reset_index()
 
+-- April and May Sign Up sql server
+
+SELECT DISTINCT signup_id
+FROM transactions
+WHERE DATEPART(month, transaction_start_date) IN (4,5);
+
+## Pandas
+
+import pandas as pd
+import datetime as dt
+
+transactions["transaction_start_date"] = pd.to_datetime(
+    transactions["transaction_start_date"]
+)
+transactions["month"] = transactions["transaction_start_date"].dt.month
+
+select_months = transactions[(transactions["month"].isin([4, 5]))]
+result = select_months["signup_id"].unique()
+
+
 
 
 
