@@ -131,4 +131,12 @@ import numpy as np
 result = airbnb_search_details[(airbnb_search_details['accommodates'] == 1) & (airbnb_search_details['property_type'] == 'Apartment')]
 
 
+-- air bnb 2
+select * from airbnb_search_details
+WHERE host_response_rate IS NULL;
 
+##pandas 
+import pandas as pd
+import numpy as np
+
+result = airbnb_search_details[airbnb_search_details['host_response_rate'].isnull()]
