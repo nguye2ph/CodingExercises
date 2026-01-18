@@ -91,6 +91,15 @@ SF_searches = airbnb_search_details[(airbnb_search_details['city'] == 'SF') & (a
                                     & (airbnb_search_details['review_scores_rating'].notnull()) ]
 result = SF_searches.sort_values(['review_scores_rating'],ascending = False)
 
+-- Speed Express
+select COUNT(order_id) from shopify_orders so 
+INNER JOIN shopify_carriers sc
+ON so.carrier_id = sc.ID
+WHERE sc.name = 'Speedy Express'
+
+##pandas
+orders_and_carriers = shopify_orders.merge(shopify_carriers, left_on='carrier_id', right_on='id')
+result = orders_and_carriers[orders_and_carriers['name'].str.lower() == 'speedy express'].shape[0]
 
 
 
