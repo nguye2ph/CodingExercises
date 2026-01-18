@@ -101,5 +101,21 @@ WHERE sc.name = 'Speedy Express'
 orders_and_carriers = shopify_orders.merge(shopify_carriers, left_on='carrier_id', right_on='id')
 result = orders_and_carriers[orders_and_carriers['name'].str.lower() == 'speedy express'].shape[0]
 
+-- unique worker ids
+
+select DISTINCT worker_id from worker_logins
+WHERE login_timestamp BETWEEN '12/13/2021' AND '12/19/2021';
+
+##pandas 
+
+import pandas as pd
+import datetime as dt
+
+worker_logins["login_timestamp"] = pd.to_datetime(worker_logins["login_timestamp"])
+dates_df = worker_logins[
+    worker_logins["login_timestamp"].between("2021-12-13", "2021-12-19")
+]
+result = dates_df["worker_id"].unique()
+
 
 
