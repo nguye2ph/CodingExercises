@@ -222,3 +222,8 @@ exclude = winemag_p1['description'].str.lower().str.contains(
 r'\b(plums|cherries|roses|hazelnuts)\b', regex=True)
 
 result = winemag_p1[include & ~exclude][['winery']].drop_duplicates()
+
+
+
+select SUM(order_total ) AS revenue from amazon_sales
+WHERE year(order_date) =2021
