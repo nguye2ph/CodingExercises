@@ -140,3 +140,26 @@ import pandas as pd
 import numpy as np
 
 result = airbnb_search_details[airbnb_search_details['host_response_rate'].isnull()]
+
+
+-- pending claims
+
+select 
+COUNT(claim_id) AS n_claims
+from cvs_claims
+WHERE DATEPART(year, date_submitted) = 2021
+AND DATEPART(month, date_submitted) = 12
+AND date_accepted IS NULL
+AND date_rejected IS NULL
+;
+
+## pandas 
+
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+cvs_claims.head()
+start_date = '2021-12-01'
+end_date = '2021-12-31'
+cvs_claims[(cvs_claims['date_accepted'].isna()) & (cvs_claims['date_rejected'].isna())& (cvs_claims['date_submitted']>= start_date) & (cvs_claims['date_submitted'] <= end_date)].shape[0]
