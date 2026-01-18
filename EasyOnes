@@ -117,5 +117,18 @@ dates_df = worker_logins[
 ]
 result = dates_df["worker_id"].unique()
 
+--airbnb
+
+select * from airbnb_search_details
+WHERE property_type = 'Apartment'
+AND accommodates = 1
+
+##pandas
+
+import pandas as pd
+import numpy as np
+
+result = airbnb_search_details[(airbnb_search_details['accommodates'] == 1) & (airbnb_search_details['property_type'] == 'Apartment')]
+
 
 
