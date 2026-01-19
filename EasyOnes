@@ -260,4 +260,19 @@ employees.head()
 
 employees[(employees['joining_date'] >= '2022-01-01') & (employees['joining_date'] < '2022-08-01')]['id'].count()
 
----
+--- Non HS SAT Score
+select * from sat_scores
+WHERE school NOT LIKE '%HS'
+
+SELECT
+    *
+FROM sat_scores
+WHERE 
+    RIGHT(school, 2) <> 'HS'
+
+select * 
+from sat_scores
+where right(trim(school), 2) <> 'hs'
+
+select * from sat_scores
+where CHARINDEX('HS', school)=0
