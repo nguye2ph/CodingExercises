@@ -224,6 +224,40 @@ r'\b(plums|cherries|roses|hazelnuts)\b', regex=True)
 result = winemag_p1[include & ~exclude][['winery']].drop_duplicates()
 
 
-
+-----------------------------
 select SUM(order_total ) AS revenue from amazon_sales
 WHERE year(order_date) =2021
+
+
+# Import your libraries
+import pandas as pd
+
+result = amazon_sales[amazon_sales['order_date'].dt.year == 2021['order_total'].sum()
+df = pd.DataFrame({'REVENUE': [result]})
+
+return
+---------------------------------------------------
+--- number of hires between specific time period
+
+select COUNT(*) from employees
+WHERE joining_date BETWEEN '01/01/2022'
+AND '07/31/2022'
+;
+
+SELECT COUNT(*)
+FROM employees
+WHERE joining_date BETWEEN CAST('2022-01-01' AS DATE) AND CAST('2022-08-01' AS DATE);
+
+select count(*) 
+from employees
+where year(joining_date) = 2022 and month(joining_date) between 01 and 07 ;
+
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+employees.head()
+
+employees[(employees['joining_date'] >= '2022-01-01') & (employees['joining_date'] < '2022-08-01')]['id'].count()
+
+---
