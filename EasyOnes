@@ -287,7 +287,7 @@ WHERE
 --COUNT(column) executes first - it aggregates and counts all rows
 --DISTINCT is applied second - it tries to remove duplicates from the result set
 
---doesn't work with window function though might need to use subquery and row_number()
+--doesn't work with window function though might need to use subquery and row_number(). works with groupby
 
 WITH distinct_movies AS (
     SELECT DISTINCT 
@@ -299,3 +299,10 @@ SELECT
     nominee,
     COUNT(*) OVER (PARTITION BY nominee) AS n_distinct_movies
 FROM distinct_movies
+
+import pandas as pd
+import numpy as np
+
+nominee = oscar_nominees[oscar_nominees['nominee'] == 'Abigail Breslin']
+result = nominee.movie.nunique()
+
