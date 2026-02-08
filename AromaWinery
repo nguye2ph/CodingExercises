@@ -26,6 +26,8 @@ WHERE ' ' + lower(description) + ' ' LIKE '% plum %'
   OR ' ' + lower(description) + ' ' LIKE '% rose %'
   OR ' ' + lower(description) + ' ' LIKE '% hazelnut %'
 EXCEPT
+--This subtracts any winery that has any wine description containing plural terms.
+--The same space-padding and lowercase logic is applied here to ensure clean filtering.
 SELECT DISTINCT winery
 FROM winemag_p1
 WHERE ' ' + lower(description) + ' ' LIKE '% plums %'
