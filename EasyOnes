@@ -276,3 +276,11 @@ where right(trim(school), 2) <> 'hs'
 
 select * from sat_scores
 where CHARINDEX('HS', school)=0
+
+------
+SELECT
+    count(distinct movie) AS n_movies_by_abi
+FROM oscar_nominees
+WHERE 
+    nominee = 'Abigail Breslin'
+--distinct count vs count distinct
