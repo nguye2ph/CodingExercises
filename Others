@@ -5,3 +5,5 @@ you can use window function without partition
 SELECT customer_id,
        NTILE(4) OVER(ORDER BY lifetime_value DESC) quartile
 FROM customers;
+--- so this ranks all customer basically ranking each row rather than by dept for ex
+
